@@ -48,16 +48,15 @@ moves = [
 st.write("Select the moves you want to include in your combo:")
 selected_moves = st.multiselect("Select moves", moves)
 
-st.write("Select the number of moves you want in your combo:")
-combo_length = st.slider(
-    "Combo length",
-    min_value=2,
-    max_value=10,
-    value=3,
-)
-
 # Generate a random sequence of moves of length `combo_length`
 if selected_moves:
+    st.write("Select the number of moves you want in your combo:")
+    combo_length = st.slider(
+        "Combo length",
+        min_value=2,
+        max_value=10,
+        value=3,
+    )
     generate = st.button("Generate Combo")
     if not generate:
         st.stop()
