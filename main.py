@@ -3,25 +3,10 @@ import random
 import streamlit as st
 import streamlit_extras as stx
 
-st.title("KizCombos")
+st.title("Welcome to KizCombos!")
 
 # Streamlit app goes here
-st.write(
-    "Welcome to KizCombos! This is a web app that helps you find the best combos for your Kizomba dance routines."
-)
-
-
-# Load the data
-# @st.cache
-# def load_data():
-#     data = pd.read_csv("data/kizomba_moves.csv")
-#     return data
-
-
-# data = load_data()
-
-# Display the data
-# st.write(data)
+st.write("Your source of endless combos for your Kizomba practice routines.")
 
 moves = [
     "Side Opening",
@@ -44,9 +29,9 @@ moves = [
     "Diamond Step",
 ]
 
-
-st.write("Select the moves you want to include in your combo:")
-selected_moves = st.multiselect("Select moves", moves)
+selected_moves = st.multiselect(
+    "Select the moves you want to include in your combo:", moves
+)
 
 # Generate a random sequence of moves of length `combo_length`
 if selected_moves:
@@ -57,13 +42,11 @@ if selected_moves:
         max_value=10,
         value=3,
     )
-    generate = st.button("Generate Combo")
+    generate = st.button("Generate New Combo!")
     if not generate:
         st.stop()
     else:
         sequence = random.choices(selected_moves, k=combo_length)
-
-        st.write("Here is your combo:")
         st.divider()
         for i, move in enumerate(sequence):
             # st.write(f"{i+1}. {move}")
